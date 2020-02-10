@@ -17,7 +17,7 @@ So, if I'm not manually inputting data, I felt there were three options:
 3. Emulate the way I would be getting the car data manually by web scraping and pulling in the data.
 
 I did not go with option one, because I knew that existing data might not be as clean as I was expecting, and I couldn't be sure that all the data points I was looking for would be there. Using an API is a great idea, but I was not able to find any useful ones. I originally attempted to use the Autotrader API, but the result sets did not have all the information I needed. In addition, sites like Edmunds have either removed their API access, put them behind paywalls, or don't return the necessary data points. This left web scraping as the solution of choice.
-# Designing the database
+## Designing the database
 Now that I had decided what method I was using to seed the data, I could take a look at what data points were available via web scraping so that I effectively could design the database. To get a quick prototype, I wrote the web scraper and inputted the data into text files as JSON. This would allow me to easily write a script reader to pull the data into a more permanent database, such as MySQL or MongoDB. The data I was able to scrape followed this pattern: a "CAR MAKE" has "CAR MODEL"s. A "CAR MODEL" has "TRIM LEVEL"s. A "TRIM LEVEL" has "FEATURE"s. A "FEATURE" is a set of attributes, such as "HORSEPOWER": "300", "HEATED SEATS": "true", "PANORAMIC SUNROOF": "true".
 
 Despite the ease in which uploading these json files to a document database would be, I wanted the data to be consistent, reliable, and relational. Perfect use case for an RDBMS.
